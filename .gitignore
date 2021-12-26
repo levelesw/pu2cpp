@@ -6,6 +6,7 @@
 *.o
 *.pm.tdy
 *.bs
+local/
 
 # Devel::Cover
 cover_db/
@@ -33,3 +34,12 @@ inc/
 /MANIFEST.bak
 /pm_to_blib
 /*.zip
+
+# cpanfile
+cpanfile.snapshot
+
+# plenv
+.perl-version
+
+# vscode
+.vscode/
