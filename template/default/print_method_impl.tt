@@ -1,0 +1,19 @@
+/******************************************************************************
+ * @brief	
+ * @param	
+ * @return	
+ *****************************************************************************/
+[% item.return %] [% class_name %]::[% item.name %](
+[%- SET count = 1 -%]
+[%- FOR arg IN item.args -%]
+[% arg.type %] [% arg.name %]
+[%- IF count != item.args.size -%]
+, 
+[%- END -%]
+[%- SET count = count + 1 -%]
+[% END -%]
+)
+[%- IF item.is_const == 1 -%] const[%- END %]
+{
+	
+}

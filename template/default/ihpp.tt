@@ -1,0 +1,30 @@
+/******************************************************************************
+ * @file		% class_name %].h
+ * @brief		
+ * @author		
+ *****************************************************************************/
+[% SET guard = class_name.upper _ "_H" -%]
+#ifndef [% guard %]
+#define [% guard %]
+
+[% IF class_namespace != "" -%]
+namespace [% class_namespace %] {
+
+[% END -%]
+class [% class_name %]
+{
+public:
+	virtual ~[% class_name %]() = default;
+
+public:
+[% FOR item IN public_methods -%]
+	[% INCLUDE print_method_prototype.tt item=item -%] = 0;
+[% END -%]
+
+};
+
+[% IF class_namespace != "" -%]
+} // namespace [% class_namespace %]
+
+[% END -%]
+#endif // [% guard %]
