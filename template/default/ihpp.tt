@@ -1,0 +1,40 @@
+/******************************************************************************
+ * @file		[% class_name %].[% header_ext %]
+ * @brief		
+ * @author		
+ *****************************************************************************/
+[% SET guard = class_name.upper _ "_" _ header_ext.upper -%]
+#ifndef [% guard %]
+#define [% guard %]
+
+[% IF class_namespace != "" -%]
+namespace [% class_namespace %] {
+
+[% END -%]
+[% INCLUDE print_method_class_template_types.tt t_types=class_template_types -%]
+class [% class_name %][%- IF inheritance.size > 0 -%]
+ : [%- SET inheritance_count = 1 -%]
+[% FOR i_type IN inheritance -%]
+[% i_type.accessibility %] [% i_type.class %]
+[%- IF inheritance_count != inheritance.size -%]
+, 
+[%- END -%]
+[%- SET inheritance_count = inheritance_count + 1 -%]
+[%- END -%]
+[%- END %]
+{
+public:
+	virtual ~[% class_name %]() = default;
+
+public:
+[% FOR item IN public_methods -%]
+	[% INCLUDE print_method_prototype.tt item=item -%] = 0;
+[% END -%]
+
+};
+
+[% IF class_namespace != "" -%]
+} // namespace [% class_namespace %]
+
+[% END -%]
+#endif // [% guard %]

@@ -1,0 +1,31 @@
+/******************************************************************************
+ * @brief	
+ * @param	
+ * @return	
+ *****************************************************************************/
+[% INCLUDE print_method_class_template_types.tt t_types=t_types -%]
+[% item.return %] [% class_name %]
+[%- IF t_types.size > 0 -%]
+<[%- SET type_count = 1 -%]
+[% FOR type IN t_types -%]
+[% type %]
+[%- IF type_count != t_types.size -%]
+, 
+[%- END -%]
+[%- SET type_count = type_count + 1 -%]
+[%- END -%]
+>
+[%- END -%]::[% item.name %](
+[%- SET count = 1 -%]
+[%- FOR arg IN item.args -%]
+[% arg.type %] [% arg.name %]
+[%- IF count != item.args.size -%]
+, 
+[%- END -%]
+[%- SET count = count + 1 -%]
+[% END -%]
+)
+[%- IF item.is_const == 1 -%] const[%- END %]
+{
+	
+}

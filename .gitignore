@@ -43,3 +43,7 @@ cpanfile.snapshot
 
 # vscode
 .vscode/
+
+# app
+output/**
+!output/.gitkeep
