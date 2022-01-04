@@ -1,0 +1,11 @@
+[% IF t_types.size > 0 -%]
+template <[%- SET count = 1 -%]
+[% FOR type IN t_types -%]
+typename [% type %]
+[%- IF count != t_types.size -%]
+, 
+[%- END -%]
+[%- SET count = count + 1 -%]
+[%- END -%]
+>
+[% END -%]

@@ -9,9 +9,10 @@
 namespace [% class_namespace %] {
 
 [% END -%]
-/**
+/******************************************************************************
  * Constructor
- */
+ *****************************************************************************/
+[% INCLUDE print_method_class_template_types.tt t_types=class_template_types -%]
 [% class_name %]::[% class_name %]()
 {
 }
@@ -19,15 +20,16 @@ namespace [% class_namespace %] {
 /******************************************************************************
  * Destructor
  *****************************************************************************/
+[% INCLUDE print_method_class_template_types.tt t_types=class_template_types -%]
 [% class_name %]::~[% class_name %]()
 {
 }
 [% FOR item IN public_methods %]
-[% INCLUDE print_method_impl.tt item=item -%]
+[% INCLUDE print_method_impl.tt item=item t_types=class_template_types -%]
 
 [% END -%]
 [% FOR item IN private_methods %]
-[% INCLUDE print_method_impl.tt item=item -%]
+[% INCLUDE print_method_impl.tt item=item t_types=class_template_types -%]
 
 [% END -%]
 

@@ -1,3 +1,4 @@
+use 5.010;
 use strict;
 use warnings;
 use utf8;
@@ -17,9 +18,20 @@ my $tt = Template->new(
 );
 
 my $item = {
-    class_name      => 'CxxHogeHoge',
-    class_namespace => 'aaa',
-    public_methods  => [
+    class_name           => 'CxxHogeHoge',
+    class_namespace      => '',
+    class_template_types => [ 'T', 'U' ],
+    inheritance          => [
+        {
+            class         => 'CBase',
+            accessibility => 'public',
+        },
+        {
+            class         => 'IBase',
+            accessibility => 'public',
+        }
+    ],
+    public_methods => [
         {
             name   => "Method1",
             return => "bool",
@@ -58,7 +70,14 @@ my $item = {
 };
 
 my $item2 = {
-    class_name     => 'IxxHogeHoge',
+    class_name           => 'IxxHogeHoge',
+    class_template_types => ['T'],
+    inheritance          => [
+        {
+            class         => 'IBase',
+            accessibility => 'public',
+        }
+    ],
     public_methods => [
         {
             name   => "Method1",
