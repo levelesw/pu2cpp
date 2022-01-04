@@ -1,9 +1,9 @@
 /******************************************************************************
- * @file		[% class_name %].cpp
+ * @file		[% class_name %].[% source_ext %]
  * @brief		
  * @author		
  *****************************************************************************/
-#include "[% class_name %].h"
+#include "[% class_name %].[% header_ext %]"
 
 [% IF class_namespace != "" -%]
 namespace [% class_namespace %] {

@@ -1,9 +1,9 @@
 /******************************************************************************
- * @file		[% class_name %].h
+ * @file		[% class_name %].[% header_ext %]
  * @brief		
  * @author		
  *****************************************************************************/
-[% SET guard = class_name.upper _ "_H" -%]
+[% SET guard = class_name.upper _ "_" _ header_ext.upper -%]
 #ifndef [% guard %]
 #define [% guard %]
 
