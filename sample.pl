@@ -108,9 +108,11 @@ sub _export {
     );
 
     for my $class ( @{$classes_aref} ) {
-        $tt->process( 'cpp.tt', $class,
-            $output_dir . '/' . $class->{class_name} . '.' . $source_ext )
-          or die $@;
+        if ( scalar @{ $class->{class_template_types} } == 0 ) {
+            $tt->process( 'cpp.tt', $class,
+                $output_dir . '/' . $class->{class_name} . '.' . $source_ext )
+              or die $@;
+        }
         $tt->process( 'hpp.tt', $class,
             $output_dir . '/' . $class->{class_name} . '.' . $header_ext )
           or die $@;

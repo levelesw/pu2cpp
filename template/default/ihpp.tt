@@ -26,6 +26,7 @@ class [% class_name %][%- IF inheritance.size > 0 -%]
 public:
 	virtual ~[% class_name %]() = default;
 
+// methods
 public:
 [% FOR item IN public_methods -%]
 	[% INCLUDE print_method_prototype.tt item=item -%] = 0;
