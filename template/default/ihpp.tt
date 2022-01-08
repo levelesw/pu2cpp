@@ -1,7 +1,7 @@
 /******************************************************************************
  * @file		[% class_name %].[% header_ext %]
- * @brief		
- * @author		
+ * @brief		[% name %] class
+ * @author		[% author %]
  *****************************************************************************/
 [% SET guard = class_name.upper _ "_" _ header_ext.upper -%]
 #ifndef [% guard %]

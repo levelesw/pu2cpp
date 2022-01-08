@@ -6,6 +6,7 @@
 #  --source-ext or -s -> extention for C++ source files (default ".cpp")
 #  --header-ext or -h -> extention for C++ header files (default ".h")
 #  --template or -t -> template to use (default: "default")
+#  --author or -a -> author (default: "")
 use 5.010;
 use strict;
 use warnings;
@@ -24,12 +25,14 @@ my $output_dir = './out';     # output dir
 my $source_ext = 'cpp';       # extention for C++ source files
 my $header_ext = 'h';         # extention for C++ header files
 my $template   = 'default';
+my $author     = '';
 GetOptions(
     'input|i=s'      => \$input_file,
     'output|o=s'     => \$output_dir,
     'source-ext|s=s' => \$source_ext,
     'header-ext|h=s' => \$header_ext,
     'template|t=s'   => \$template,
+    'author|a=s'     => \$author,
 );
 
 if ( $0 eq __FILE__ ) {
@@ -75,10 +78,12 @@ sub _parse {
 
             my $obj = {
                 class_name           => $as_name // $name,
+                name                 => $name,
                 class_template_types => $template_types_aref,
                 inheritance          => [],                     # not supported
                 source_ext           => $source_ext,
                 header_ext           => $header_ext,
+                author               => $author,
             };
 
             if ( $type =~ /class|abstract/ ) {
