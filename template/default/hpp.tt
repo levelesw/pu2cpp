@@ -1,7 +1,7 @@
 /******************************************************************************
  * @file		[% class_name %].[% header_ext %]
- * @brief		
- * @author		
+ * @brief		[% name %] class
+ * @author		[% author %]
  *****************************************************************************/
 [% SET guard = class_name.upper _ "_" _ header_ext.upper -%]
 #ifndef [% guard %]
@@ -27,8 +27,14 @@ public:
 	[% class_name %](/* args */);
 	~[% class_name %]();
 
+// methods
 public:
 [% FOR item IN public_methods -%]
+	[% INCLUDE print_method_prototype.tt item=item -%];
+[% END -%]
+
+protected:
+[% FOR item IN protected_methods -%]
 	[% INCLUDE print_method_prototype.tt item=item -%];
 [% END -%]
 
@@ -37,13 +43,14 @@ private:
 	[% INCLUDE print_method_prototype.tt item=item -%];
 [% END -%]
 
+// variables
 private:
 [% FOR private_variables -%]
 [% END -%]
 
 };
-
 [% IF class_template_types.size > 0 -%]
+
 /******************************************************************************
  * Constructor
  *****************************************************************************/

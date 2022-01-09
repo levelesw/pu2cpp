@@ -1,7 +1,7 @@
 /******************************************************************************
  * @file		[% class_name %].[% header_ext %]
- * @brief		
- * @author		
+ * @brief		[% name %] class
+ * @author		[% author %]
  *****************************************************************************/
 [% SET guard = class_name.upper _ "_" _ header_ext.upper -%]
 #ifndef [% guard %]
@@ -26,6 +26,7 @@ class [% class_name %][%- IF inheritance.size > 0 -%]
 public:
 	virtual ~[% class_name %]() = default;
 
+// methods
 public:
 [% FOR item IN public_methods -%]
 	[% INCLUDE print_method_prototype.tt item=item -%] = 0;
